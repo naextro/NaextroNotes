@@ -1,0 +1,36 @@
+{
+  "name": "naextro-notes",
+  "version": "1.0.0",
+  "description": "A simple subject-wise notes holder for organizing and sharing study materials",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "notes",
+    "study",
+    "education",
+    "organization",
+    "sharing",
+    "gallery",
+    "web-app"
+  ],
+  "author": "Naextro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naextro/naextro-notes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/naextro/naextro-notes/issues"
+  },
+  "homepage": "https://github.com/naextro/naextro-notes#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

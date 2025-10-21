@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Naextro's Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>📚 Naextro's Notes</h1>
+    </header>
+
+    <main>
+        <section id="home-view" class="view">
+            <div class="hero-section">
+                <h1 class="hero-title">Share Your Notes With <span class="gradient-text">Friends</span></h1>
+                <p class="hero-subtitle">A simple subject-wise notes holder - Keep track of your study materials and share them easily with your study group</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-highlight">
+                        <span class="stat-number-large">8</span>
+                        <span class="stat-label-large">Notes Shared</span>
+                    </div>
+                    <div class="stat-highlight">
+                        <span class="stat-number-large">2</span>
+                        <span class="stat-label-large">Subjects Covered</span>
+                    </div>
+                    <div class="stat-highlight">
+                        <span class="stat-number-large">4</span>
+                        <span class="stat-label-large">Study Days</span>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <div class="options">
+                        <button class="cta-primary" onclick="showView('gallery-view')">
+                            <span class="btn-icon">🖼️</span>
+                            <span>Explore Gallery</span>
+                        </button>
+                        <button class="cta-secondary" onclick="showView('filter-view')">
+                            <span class="btn-icon">🔎</span>
+                            <span>Smart Filter</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="home-stats"></div>
+            
+            <div class="feature-highlights">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Subject-Wise Organization</h3>
+                    <p>Keep your notes organized by subject and date for easy access</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Simple Sharing</h3>
+                    <p>Share your study notes easily with friends and study groups</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Quick Search</h3>
+                    <p>Find your notes quickly with simple filtering by subject and date</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery-view" class="view hidden">
+            <h2 class="page-title">All Notes (Grouped by Date → Subject)</h2>
+            <button onclick="showView('home-view')" class="back-btn">← Back to Home</button>
+            <div id="image-container" class="content-container"></div>
+        </section>
+
+        <section id="filter-view" class="view hidden">
+            <h2 class="page-title">Filter Notes (Enable optional filters)</h2>
+            <button onclick="showView('home-view')" class="back-btn">← Back to Home</button>
+
+            <div class="filter-controls-container">
+                <div class="filter-group">
+                    <div class="controls-row">
+                        <button id="toggle-subject-btn" class="small-btn" onclick="toggleFilter('subject')">Enable
+                            Subject Filter</button>
+                        <button class="small-btn" onclick="clearSubjects()">Clear</button>
+                    </div>
+                    <div id="subject-filter-controls" class="filter-controls">
+                        <h3>Select subject</h3>
+                        <div class="subject-dropdown">
+                            <select id="subject-filter" onchange="applyCombinedFilter()"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="controls-row">
+                        <button id="toggle-date-btn" class="small-btn" onclick="toggleFilter('date')">Enable Date
+                            Filter</button>
+                        <button class="small-btn" onclick="clearDate()">Clear Date</button>
+                    </div>
+
+                    <div id="date-filter-controls" class="filter-controls">
+                        <h3>Select date (flexible)</h3>
+                        <div class="date-dropdowns">
+                            <div class="dropdown-group">
+                                <label for="day-filter">Day:</label>
+                                <select id="day-filter" onchange="applyCombinedFilter()">
+                                    <option value="">Any</option>
+                                </select>
+                            </div>
+                            <div class="dropdown-group">
+                                <label for="month-filter">Month:</label>
+                                <select id="month-filter" onchange="applyCombinedFilter()">
+                                    <option value="">Any</option>
+                                </select>
+                            </div>
+                            <div class="dropdown-group">
+                                <label for="year-filter">Year:</label>
+                                <select id="year-filter" onchange="applyCombinedFilter()">
+                                    <option value="">Any</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="filter-hint">*Select any combination of day, month, or year. Leave "Any" for no filter on that field.</p>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button onclick="applyCombinedFilter()" class="apply-btn">Apply Filters</button>
+                    <button onclick="resetAllFilters()" class="small-btn">Reset All</button>
+                    <div id="filter-status"></div>
+                </div>
+            </div>
+
+            <div id="filtered-image-container" class="content-container"></div>
+        </section>
+    </main>
+
+    <footer>&copy; 2025 Naextro's Notes</footer>
+
+    <!-- Preview Modal -->
+    <div id="preview-overlay" class="preview-overlay" onclick="closePreview()">
+        <div class="preview-container" onclick="event.stopPropagation()">
+            <button class="preview-close" onclick="closePreview()">&times;</button>
+            <img id="preview-image" class="preview-image" src="" alt="Preview">
+            <div id="preview-info" class="preview-info"></div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
