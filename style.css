@@ -827,8 +827,8 @@ main {
 }
 
 .preview-image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
