@@ -20,6 +20,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Header & Footer */
@@ -28,6 +29,7 @@ header {
     padding: 1rem 1.5rem;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 header h1 {
@@ -48,6 +50,7 @@ main {
     margin: 20px auto;
     padding: 20px;
     width: 100%;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .view {
@@ -55,6 +58,7 @@ main {
     padding: 18px;
     border-radius: 8px;
     margin-bottom: 16px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .hidden {
@@ -82,6 +86,7 @@ main {
     background: var(--accent-color);
     color: var(--text-color);
     font-size: 1rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .options button:hover,
@@ -127,6 +132,7 @@ main {
     max-height: 75vh;
     overflow-y: auto;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Custom scrollbar */
@@ -657,6 +663,7 @@ main {
     background: var(--dark-card);
     color: var(--text-color);
     font-size: 1rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .controls-row {
@@ -712,6 +719,7 @@ main {
     color: var(--text-color);
     font-size: 1rem;
     cursor: pointer;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .dropdown-group select:hover {
@@ -763,6 +771,7 @@ main {
     color: var(--text-color);
     font-size: 1rem;
     cursor: pointer;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .subject-dropdown select:hover {
