@@ -169,6 +169,8 @@ class InfoManagerApp:
         self.setup_styles()
         self.build_ui()
         self.load_data()
+        self.load_day()
+
 
     def setup_styles(self):
         # Basic dark theme tuning
@@ -338,13 +340,16 @@ class InfoManagerApp:
         self.selected_subject = subj_name
         self.populate_images_for_subject(subj_name)
 
-    def populate_images_for_subject(self, subj_name):
+    def populate_images_for_subject(self, subject):
         self.images_listbox.delete(0, tk.END)
-        day_entry = get_day_entry(self.data, self.selected_date)
-        subj_entry = get_subject_entry(day_entry, subj_name) if day_entry else None
-        if subj_entry:
-            for img in subj_entry.get("images", []):
-                self.images_listbox.insert(tk.END, img)
+        all_images = []
+        for day in self.data:
+            for subj in day["subjects"]:
+                if subj["subject"] == subject:
+                    all_images.extend(subj["images"])
+        for img_path in all_images:
+            self.images_listbox.insert(tk.END, img_path)
+
 
     # ------------- fixed add_subject -------------
     def add_subject(self):
