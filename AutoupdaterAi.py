@@ -14,6 +14,7 @@ import re
 from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
+from tkcalendar import DateEntry
 
 # Try to import drag-and-drop support (tkinterdnd2). If not available, fallback to file dialog.
 TRY_TKDNDF = True
@@ -205,10 +206,10 @@ class InfoManagerApp:
         date_label = ttk.Label(top, text="Date (DD-MM-YYYY):")
         date_label.grid(row=0, column=0, sticky=tk.W)
 
-        self.date_var = tk.StringVar(value=self.selected_date)
-        self.date_entry = ttk.Entry(top, textvariable=self.date_var, width=15)
-        self.date_entry.grid(row=0, column=1, padx=(6, 6))
-
+# Create the StringVar first   
+        self.date_var = tk.StringVar()
+        self.date_entry = DateEntry(top, date_pattern='dd-mm-yyyy', textvariable=self.date_var)
+        self.date_entry.grid(row=0, column=1, padx=(6,6))
         today_btn = ttk.Button(top, text="Use Today", command=self.set_today)
         today_btn.grid(row=0, column=2, padx=(0, 6))
 
@@ -469,6 +470,8 @@ class InfoManagerApp:
             messagebox.showinfo("Saved", f"info.json updated (backup created).")
         except Exception as e:
             messagebox.showerror("Save Failed", f"Failed to save info.json:\n{e}")
+            
+    
 
 
 def main():
