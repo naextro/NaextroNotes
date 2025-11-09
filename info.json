@@ -96,5 +96,24 @@
         ]
       }
     ]
+  },
+  {
+    "date": "09-11-2025",
+    "subjects": [
+      {
+        "subject": "Chemistry",
+        "images": [
+          "images/09-11-2025/chemistry1.jpg",
+          "images/09-11-2025/chemistry2.jpg"
+        ]
+      },
+      {
+        "subject": "Physics",
+        "images": [
+          "images/09-11-2025/physics1.jpg",
+          "images/09-11-2025/physics2.jpg"
+        ]
+      }
+    ]
   }
 ]

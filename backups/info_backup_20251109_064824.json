@@ -6,8 +6,6 @@
         "subject": "Chemistry",
         "images": [
           "images/10-10-2025/chem1.jpg"
-
-
         ]
       },
       {
@@ -59,13 +57,42 @@
         "subject": "Chemistry",
         "images": [
           "images/18-10-2025/chem.jpg"
-          
         ]
       },
       {
         "subject": "Physics",
         "images": [
           "images/18-10-2025/phy.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "07-11-2025",
+    "subjects": [
+      {
+        "subject": "Chemistry",
+        "images": [
+          "images/07-11-2025/chemistry1.jpg",
+          "images/07-11-2025/chemistry2.jpg"
+        ]
+      },
+      {
+        "subject": "Physics",
+        "images": [
+          "images/07-11-2025/physics2.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "05-11-2025",
+    "subjects": [
+      {
+        "subject": "WEEKLY",
+        "images": [
+          "images/05-11-2025/weekly1.jpeg",
+          "images/05-11-2025/weekly2.jpeg"
         ]
       }
     ]
