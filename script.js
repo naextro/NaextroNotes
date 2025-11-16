@@ -58,7 +58,7 @@ function renderImages(data, containerId) {
     if (!data || data.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                <div class="empty-icon">📚</div>
+                <div class="empty-icon"><i class="fas fa-book"></i></div>
                 <h3>No Notes Found</h3>
                 <p>Try adjusting your filters or check back later for new notes.</p>
             </div>
@@ -81,10 +81,10 @@ function renderImages(data, containerId) {
         <p><strong>Date:</strong> ${item.date}</p>
         <div class="button-group">
           <button class="preview-btn" onclick="openPreview('${item.path}', '${item.subject}', '${item.date}')" title="Preview image">
-            <span>👁️ Preview</span>
+            <span><i class="fas fa-eye"></i> Preview</span>
           </button>
           <button class="download-btn-separate" onclick="downloadImage('${item.path}', '${item.subject}_${item.date}')" title="Download image">
-            <span>📥 Download</span>
+            <span><i class="fas fa-download"></i> Download</span>
           </button>
         </div>
       </div>
@@ -105,7 +105,7 @@ function renderGroupedImages(data, containerId) {
     enriched.forEach(dItem => {
         const dateSection = document.createElement('div');
         dateSection.className = 'date-group';
-        dateSection.innerHTML = `<h3>📅 Date: ${dItem.raw}</h3>`;
+        dateSection.innerHTML = `<h3><i class="fas fa-calendar"></i> Date: ${dItem.raw}</h3>`;
 
         (dItem.subjects || []).forEach(s => {
             const subjectSection = document.createElement('div');
@@ -127,10 +127,10 @@ function renderGroupedImages(data, containerId) {
             <p><strong>Date:</strong> ${dItem.raw}</p>
             <div class="button-group">
               <button class="preview-btn" onclick="openPreview('${p}', '${s.subject}', '${dItem.raw}')" title="Preview image">
-                <span>👁️ Preview</span>
+                <span><i class="fas fa-eye"></i> Preview</span>
               </button>
               <button class="download-btn-separate" onclick="downloadImage('${p}', '${s.subject}_${dItem.raw}')" title="Download image">
-                <span>📥 Download</span>
+                <span><i class="fas fa-download"></i> Download</span>
               </button>
             </div>
           </div>
@@ -171,41 +171,41 @@ function populateFilterOptions(data) {
     // Populate subjects
     subjectSelect.innerHTML = '<option value="">Any</option>';
     Array.from(subjects).sort((a, b) => a.localeCompare(b)).forEach(sub => {
-        const opt = document.createElement('option'); 
-        opt.value = sub; 
-        opt.textContent = sub; 
+        const opt = document.createElement('option');
+        opt.value = sub;
+        opt.textContent = sub;
         subjectSelect.appendChild(opt);
     });
 
     // Populate day dropdown
     daySelect.innerHTML = '<option value="">Any</option>';
     Array.from(days).sort((a, b) => parseInt(a) - parseInt(b)).forEach(day => {
-        const opt = document.createElement('option'); 
-        opt.value = day; 
-        opt.textContent = day; 
+        const opt = document.createElement('option');
+        opt.value = day;
+        opt.textContent = day;
         daySelect.appendChild(opt);
     });
 
     // Populate month dropdown
     monthSelect.innerHTML = '<option value="">Any</option>';
     Array.from(months).sort((a, b) => parseInt(a) - parseInt(b)).forEach(month => {
-        const opt = document.createElement('option'); 
-        opt.value = month; 
-        opt.textContent = getMonthName(month); 
+        const opt = document.createElement('option');
+        opt.value = month;
+        opt.textContent = getMonthName(month);
         monthSelect.appendChild(opt);
     });
 
     // Populate year dropdown
     yearSelect.innerHTML = '<option value="">Any</option>';
     Array.from(years).sort((a, b) => parseInt(b) - parseInt(a)).forEach(year => {
-        const opt = document.createElement('option'); 
-        opt.value = year; 
-        opt.textContent = year; 
+        const opt = document.createElement('option');
+        opt.value = year;
+        opt.textContent = year;
         yearSelect.appendChild(opt);
     });
 
     updateFilterStatus();
-    subjectSelect.onchange = applyCombinedFilter;
+    //subjectSelect.onchange = applyCombinedFilter;
 }
 
 function getMonthName(monthNum) {
@@ -218,13 +218,13 @@ function getMonthName(monthNum) {
 
 function clearSubjects() {
     document.getElementById('subject-filter').value = '';
-    applyCombinedFilter();
+    // applyCombinedFilter(); 
 }
 function clearDate() {
     document.getElementById('day-filter').value = '';
     document.getElementById('month-filter').value = '';
     document.getElementById('year-filter').value = '';
-    applyCombinedFilter();
+    // applyCombinedFilter(); 
 }
 
 function updateFilterStatus() {
@@ -259,10 +259,10 @@ function getSelectedDateFilters() {
     const day = document.getElementById('day-filter').value;
     const month = document.getElementById('month-filter').value;
     const year = document.getElementById('year-filter').value;
-    
+
     // Return null if no date filters are selected
     if (!day && !month && !year) return null;
-    
+
     return { day, month, year };
 }
 
@@ -278,11 +278,11 @@ function applyCombinedFilter() {
     if (filterState.date && dateFilters) {
         filteredData = filteredData.filter(dItem => {
             const [day, month, year] = dItem.date.split('-');
-            
+
             const matchesDay = !dateFilters.day || day === dateFilters.day;
             const matchesMonth = !dateFilters.month || month === dateFilters.month;
             const matchesYear = !dateFilters.year || year === dateFilters.year;
-            
+
             return matchesDay && matchesMonth && matchesYear;
         });
     }
@@ -306,9 +306,13 @@ function resetAllFilters() {
     document.getElementById('date-filter-controls').classList.remove('enabled');
     document.getElementById('toggle-subject-btn').textContent = 'Enable Subject Filter';
     document.getElementById('toggle-date-btn').textContent = 'Enable Date Filter';
-    clearSubjects(); clearDate(); updateFilterStatus(); applyCombinedFilter();
-}
 
+    clearSubjects(); // Clears value, no filter
+    clearDate();     // Clears value, no filter
+
+    updateFilterStatus();
+    applyCombinedFilter();
+}
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
     const target = document.getElementById(viewId);
@@ -322,7 +326,7 @@ function calculateStats() {
     const totalImages = flattenedImages.length;
     const uniqueSubjects = new Set(flattenedImages.map(img => img.subject)).size;
     const uniqueDates = new Set(flattenedImages.map(img => img.date)).size;
-    
+
     // Calculate date range
     const dates = Array.from(new Set(flattenedImages.map(img => img.date)));
     const sortedDates = dates.sort((a, b) => {
@@ -330,16 +334,16 @@ function calculateStats() {
         const dateB = parseDDMMYYYY(b);
         return dateA.ts - dateB.ts;
     });
-    
+
     const oldestDate = sortedDates[0] || 'N/A';
     const newestDate = sortedDates[sortedDates.length - 1] || 'N/A';
-    
+
     // Calculate subject breakdown
     const subjectBreakdown = {};
     flattenedImages.forEach(img => {
         subjectBreakdown[img.subject] = (subjectBreakdown[img.subject] || 0) + 1;
     });
-    
+
     return {
         totalImages,
         uniqueSubjects,
@@ -353,9 +357,9 @@ function calculateStats() {
 function updateHomepageStats() {
     const stats = calculateStats();
     const statsContainer = document.getElementById('home-stats');
-    
+
     if (!statsContainer) return;
-    
+
     // Update hero stats dynamically
     const heroStats = document.querySelectorAll('.stat-number-large');
     if (heroStats.length >= 3) {
@@ -363,7 +367,7 @@ function updateHomepageStats() {
         heroStats[1].textContent = stats.uniqueSubjects;
         heroStats[2].textContent = stats.uniqueDates;
     }
-    
+
     // Update hero stat labels
     const heroLabels = document.querySelectorAll('.stat-label-large');
     if (heroLabels.length >= 3) {
@@ -371,12 +375,17 @@ function updateHomepageStats() {
         heroLabels[1].textContent = 'Subjects Covered';
         heroLabels[2].textContent = 'Study Days';
     }
-    
+
     const subjectBreakdownHTML = Object.entries(stats.subjectBreakdown)
         .sort((a, b) => b[1] - a[1])
-        .map(([subject, count]) => `<span class="subject-stat">${subject}: ${count}</span>`)
-        .join(' • ');
-    
+        .map(([subject, count]) =>
+            `<span class="subject-stat" 
+               data-subject="${subject}" 
+               onclick="filterBySubject(event, '${subject}')">
+             ${subject}: ${count}
+         </span>`
+        ).join(' • ');
+
     statsContainer.innerHTML = `
         <div class="stats-grid">
             <div class="stat-card">
@@ -398,10 +407,25 @@ function updateHomepageStats() {
             </div>
             <div class="subject-breakdown">
                 <strong>Subject Breakdown:</strong><br>
-                <div class="subject-list">${subjectBreakdownHTML}</div>
+                <div id="subject-list" class="subject-list" onclick="showView('filter-view')">${subjectBreakdownHTML}</div>
             </div>
         </div>
     `;
+    document.getElementById('subject-list').onclick = null;
+}
+function filterBySubject(event, subjectName) {
+
+    event.stopPropagation();
+
+    document.getElementById('subject-filter').value = subjectName;
+
+    filterState.subject = true;
+
+    document.getElementById('subject-filter-controls').classList.add('enabled');
+    document.getElementById('toggle-subject-btn').textContent = 'Disable Subject Filter';
+    updateFilterStatus();
+
+    showView('filter-view');
 }
 
 /* ====== Image Actions ====== */
@@ -415,7 +439,7 @@ function downloadImage(imagePath, filename) {
     link.href = imagePath;
     link.download = filename || 'image';
     link.target = '_blank';
-    
+
     // Append to body, click, and remove
     document.body.appendChild(link);
     link.click();
@@ -427,30 +451,30 @@ function openPreview(imagePath, subject, date) {
     const overlay = document.getElementById('preview-overlay');
     const previewImage = document.getElementById('preview-image');
     const previewInfo = document.getElementById('preview-info');
-    
+
     // Set the image source
     previewImage.src = imagePath;
     previewImage.alt = `${subject} - ${date}`;
-    
+
     // Set the info text
     previewInfo.textContent = `${subject} • ${date}`;
-    
+
     // Show the overlay
     overlay.classList.add('active');
-    
+
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
 }
 
 function closePreview() {
     const overlay = document.getElementById('preview-overlay');
-    
+
     // Hide the overlay
     overlay.classList.remove('active');
-    
+
     // Restore body scroll
     document.body.style.overflow = '';
-    
+
     // Clear the image source after animation
     setTimeout(() => {
         const previewImage = document.getElementById('preview-image');
