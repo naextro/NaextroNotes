@@ -115,5 +115,41 @@
         ]
       }
     ]
+  },
+  {
+    "date": "14-11-2025",
+    "subjects": [
+      {
+        "subject": "Chemistry",
+        "images": [
+          "images/14-11-2025/chem1.jpg",
+          "images/14-11-2025/chem2.jpg",
+          "images/14-11-2025/chem3.jpg"
+        ]
+      },
+      {
+        "subject": "Physics",
+        "images": [
+          "images/14-11-2025/phy1.jpg",
+          "images/14-11-2025/phy2.jpg",
+          "images/14-11-2025/phy3.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "15-11-2025",
+    "subjects": [
+      {
+        "subject": "Chemistry",
+        "images": [
+          "images/15-11-2025/chemistry1.jpg",
+          "images/15-11-2025/chemistry2.jpg",
+          "images/15-11-2025/chemistry3.jpg",
+          "images/15-11-2025/chemistry4.jpg",
+          "images/15-11-2025/chemistry5.jpg"
+        ]
+      }
+    ]
   }
 ]
