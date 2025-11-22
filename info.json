@@ -153,6 +153,26 @@
     ]
   },
   {
+    "date": "21-11-2025",
+    "subjects": [
+      {
+        "subject": "Physics",
+        "images": [
+          "images/21-11-2025/phy1.jpeg",
+          "images/21-11-2025/phy2.jpeg"
+        ]
+      },
+      {
+        "subject": "Chemistry",
+        "images": [
+          "images/21-11-2025/chem1.jpeg",
+          "images/21-11-2025/chem2.jpeg"
+
+        ]
+      }
+    ]
+  },
+  {
     "date": "22-11-2025",
     "subjects": [
       {
