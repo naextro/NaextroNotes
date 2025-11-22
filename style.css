@@ -82,6 +82,8 @@ main {
 .options button,
 .back-btn,
 .apply-btn {
+    transition: 
+        background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
     padding: 10px 14px;
     border-radius: 8px;
     border: none;
@@ -678,11 +680,18 @@ main {
 
 
 .filter-controls {
-    display: none;
+    transition: 
+        opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), 
+        max-height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    display: block; /* Always block, control visibility with opacity/max-height */
 }
 
 .filter-controls.enabled {
-    display: block;
+    opacity: 1;
+    max-height: 600px; 
 }
 
 

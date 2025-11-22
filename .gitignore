@@ -5,6 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 
 temp
+tempCodeRunnerFile.py
 
 # Runtime data
 pids
