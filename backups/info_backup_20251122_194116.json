@@ -151,23 +151,5 @@
         ]
       }
     ]
-  },
-  {
-    "date": "22-11-2025",
-    "subjects": [
-      {
-        "subject": "Physics",
-        "images": [
-          "images/22-11-2025/physics1.jpeg",
-          "images/22-11-2025/physics2.jpeg"
-        ]
-      },
-      {
-        "subject": "Chemistry",
-        "images": [
-          "images/22-11-2025/chemistry1.jpeg"
-        ]
-      }
-    ]
   }
 ]
