@@ -167,6 +167,7 @@
         "images": [
           "images/21-11-2025/chem1.jpeg",
           "images/21-11-2025/chem2.jpeg"
+
         ]
       }
     ]
@@ -185,27 +186,6 @@
         "subject": "Chemistry",
         "images": [
           "images/22-11-2025/chemistry1.jpeg"
-        ]
-      }
-    ]
-  },
-  {
-    "date": "23-11-2025",
-    "subjects": [
-      {
-        "subject": "Biology",
-        "images": [
-          "images/23-11-2025/biology1.jpg",
-          "images/23-11-2025/biology2.jpg",
-          "images/23-11-2025/biology3.jpg",
-          "images/23-11-2025/biology4.jpg",
-          "images/23-11-2025/biology5.jpg",
-          "images/23-11-2025/biology6.jpg",
-          "images/23-11-2025/biology7.jpg",
-          "images/23-11-2025/biology8.jpg",
-          "images/23-11-2025/biology9.jpg",
-          "images/23-11-2025/biology10.jpg",
-          "images/23-11-2025/biology11.jpg"
         ]
       }
     ]

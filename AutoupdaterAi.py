@@ -109,7 +109,7 @@ def next_image_name_for(subject_key, date_folder: Path, ext):
                 nm = f.name
                 if nm.lower().startswith(subject_key) and nm.lower().endswith(ext.lower()):
                     # extract trailing number if present
-                    m = re.match(rf'^{re.escape(subject_key)}(\d+)\{re.escape(ext.lower())}$', nm.lower())
+                    m = re.match(rf'^{re.escape(subject_key)}(\d+){re.escape(ext.lower())}$', nm.lower())
                     if m:
                         try:
                             existing.append(int(m.group(1)))
