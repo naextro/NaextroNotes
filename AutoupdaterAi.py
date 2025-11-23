@@ -52,8 +52,27 @@ def backup_json():
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     BACKUP_DIR.mkdir(exist_ok=True)
     dest = BACKUP_DIR / f"info_backup_{timestamp}.json"
+    
+    # 1. Create the new backup
     if INFO_JSON.exists():
         shutil.copy2(INFO_JSON, dest)
+
+    # 2. Cleanup: Limit to max 4 backups
+    # Get all .json files in the backup dir
+    backups = list(BACKUP_DIR.glob("*.json"))
+    
+    # Sort them by modification time (Oldest -> Newest)
+    backups.sort(key=lambda f: f.stat().st_mtime)
+
+    # While we have more than 4, delete the item at index 0 (the oldest)
+    while len(backups) > 4:
+        oldest_file = backups.pop(0)
+        try:
+            oldest_file.unlink() # Deletes the file
+            print(f"Deleted old backup: {oldest_file.name}")
+        except Exception as e:
+            print(f"Error deleting {oldest_file.name}: {e}")
+
     return dest
 
 
